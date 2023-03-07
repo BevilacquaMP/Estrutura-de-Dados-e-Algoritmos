@@ -1,0 +1,120 @@
+#include <stdio.h>
+
+int main(){
+    
+    int y, x = 1;
+    int *p; 
+    
+    p = &x; /* faz com que p aponte para o endereço de x */
+    y = *p; /* atribuio valor de x para y */
+    
+    printf("Endereco de p = %u\n", &p);
+    printf("Endereco de x = %u\n", &x);
+    printf("Endereco de y = %u\n", &y);
+    printf("Valor de p = %u\n", p);
+    printf("Valor de *p = %d\n", *p);
+    printf("Valor de x = %d\n", x);
+    printf("Valor de y = %d\n", y);
+    
+    return 0;
+    
+}
+
+--------------------------------------------------------------------------------------------------------------------
+
+#include <stdio.h>
+
+int main(){
+
+    int x = 100;
+    int *p1, *p2; 
+    
+    p1 = &x; 
+    p2 = p1;
+    
+    printf("Endereço de x = %p\n", p2); /* imprime o endereço de x, não seu valor */
+    printf("Valor de x = %d\n", *p2);  /* imprime o valor de x */
+    
+    return 0;
+    
+}
+
+-------------------------------------------------------------------------------------------------------------------
+
+#include <stdio.h>
+
+void soma(int *px, int *py){
+    *px = *px + 10;
+    *py = *py * 2;
+}
+
+int main(){ 
+    
+    int x = 1, y = 2;
+    
+    soma(&x, &y);
+    
+    printf("X = %d e Y = %d\n", x, y);
+    
+    return 0;
+    
+}
+
+-------------------------------------------------------------------------------------------------------------------
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main (){
+    int vetor[2];
+    int *v;
+    
+    v = vetor; 
+    
+    v[0] = 123; 
+    v[1] = 456; 
+    
+    printf("vetor[0] = %d\n", vetor[0]);
+    printf("vetor[1] = %d\n", vetor[1]);
+    
+    system ("PAUSE");
+    
+    return 0;
+    
+}
+
+-------------------------------------------------------------------------------------------------------------------
+
+#include <stdio.h>
+#include <stdlib.h> 
+#define MAX 10
+
+int main (){
+    
+    int vetor[MAX], i, *v;
+
+    v = &vetor[0];
+    
+    printf("Digite valores para serem gravados no vetor\n");
+    printf("Indice\tEndereco de Memoria\n");
+    
+    for (i = 0; i < MAX; i++) {
+        printf("[%d]\t%p\t\t-> ", i, (v+i));
+        scanf("%d", (v+i)); //valor é gravado no end. apontado pelo ponteiro
+    }
+    
+    system ("cls");
+    
+    printf("Os valores gravados no vetor foram:\n");
+    
+    for (i = 0; i < MAX; i++) {
+        printf("vetor[%d], ponteiro (%p) = %d\n", i, (v+i), *(v+i));
+        
+    }
+    
+    return 0;
+    
+}
+
+------------------------------------------------------------------------------------------------------------------
+
